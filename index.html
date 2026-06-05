@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ranji - Jaringan Komunikasi Sesuku Minangkabau</title>
+    <title>Ranji Alam Minangkabau - Jaringan Komunikasi & Silsilah</title>
     <!-- Firebase Core & Database SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
@@ -39,7 +39,7 @@
         .screen { display: none; flex-direction: column; flex: 1; height: 100%; overflow-y: auto; }
         .screen.active { display: flex; }
 
-        /* HEADER STYLING */
+        /* HEADER */
         .app-header {
             background: linear-gradient(135deg, #111, #1a1a1a);
             padding: 16px;
@@ -48,13 +48,15 @@
             align-items: center;
             justify-content: space-between;
         }
-        .app-title { font-size: 20px; font-weight: 800; color: var(--minang-gold); letter-spacing: 1px; }
+        .app-title { font-size: 18px; font-weight: 800; color: var(--minang-gold); letter-spacing: 1px; }
         .app-subtitle { font-size: 10px; color: #888; text-transform: uppercase; }
+        .header-back-block { display: flex; align-items: center; gap: 10px; }
+        .btn-global-back { background: none; border: none; color: var(--minang-gold); font-size: 22px; cursor: pointer; padding: 4px; }
 
-        /* FORM INPUT PROFIL */
+        /* FORMS */
         #screen-login { padding: 30px 20px; justify-content: center; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 12px; text-transform: uppercase; color: var(--minang-gold); margin-bottom: 8px; font-weight: 600; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 12px; text-transform: uppercase; color: var(--minang-gold); margin-bottom: 6px; font-weight: 600; }
         .form-control {
             width: 100%; background-color: rgba(255,255,255,0.05); border: 1px solid #333;
             padding: 12px; border-radius: 8px; color: var(--text-white); font-size: 14px; outline: none;
@@ -63,52 +65,33 @@
         .btn-submit {
             background: linear-gradient(135deg, var(--minang-red), #5a0000); border: 1px solid var(--minang-gold);
             color: var(--text-white); padding: 14px; border-radius: 8px; font-weight: bold; font-size: 14px;
-            cursor: pointer; width: 100%; text-transform: uppercase;
+            cursor: pointer; width: 100%; text-transform: uppercase; margin-top: 10px;
         }
 
-        /* DASHBOARD & DIREKTORI CHAT */
-        .info-box { background: #11141a; padding: 14px; border-bottom: 1px solid #222; text-align: center; }
+        /* LOKAL BOX & LIST */
+        .info-box { background: #11141a; padding: 14px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: space-between; }
+        .dashboard-user-dp { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--minang-gold); background: #222; }
         .section-title { font-size: 11px; text-transform: uppercase; color: var(--minang-gold); padding: 12px 16px 4px; font-weight: bold; }
         
-        /* TOMBOL KEMBARAN LINK RESONA APP */
         .resona-bridge-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            background: linear-gradient(135deg, #1f1a3a, #0b0c10);
-            border: 1px solid #6f42c1; box-shadow: 0 0 10px rgba(111, 66, 193, 0.3);
-            margin: 12px 16px 4px 16px; padding: 12px; border-radius: 8px;
-            text-decoration: none; color: #fff; font-weight: bold; font-size: 13px;
-            transition: 0.3s ease;
-        }
-        .resona-bridge-btn:hover {
-            box-shadow: 0 0 15px rgba(111, 66, 193, 0.6);
-            border-color: #a07aff;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #1f1a3a, #0b0c10); border: 1px solid #6f42c1;
+            margin: 12px 16px 4px 16px; padding: 12px; border-radius: 8px; text-decoration: none; color: #fff; font-weight: bold; font-size: 13px;
         }
 
-        .btn-room {
-            background: linear-gradient(135deg, #161f2b, #121922); border: 1px solid rgba(197,160,89,0.3); padding: 16px;
-            margin: 12px 16px; border-radius: 10px; cursor: pointer;
-        }
+        .btn-room { background: linear-gradient(135deg, #161f2b, #121922); border: 1px solid rgba(197,160,89,0.3); padding: 16px; margin: 12px 16px; border-radius: 10px; cursor: pointer; }
         .chat-list { flex: 1; padding: 4px 0; }
-        .chat-item {
-            display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer;
-        }
-        .chat-item:hover { background-color: rgba(255,255,255,0.02); }
-        .avatar {
-            width: 44px; height: 44px; border-radius: 50%; background-color: #2c3540;
-            display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 12px; position: relative;
-        }
-        .avatar.online::after {
-            content: ''; position: absolute; width: 10px; height: 10px; background-color: var(--online-green); border: 2px solid var(--cyber-dark); border-radius: 50%; bottom: 1px; right: 1px;
-        }
+        .chat-item { display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.02); cursor: pointer; }
+        .avatar { width: 44px; height: 44px; border-radius: 50%; background-color: #2c3540; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 12px; position: relative; }
+        .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .avatar.online::after { content: ''; position: absolute; width: 10px; height: 10px; background-color: var(--online-green); border: 2px solid var(--cyber-dark); border-radius: 50%; bottom: 1px; right: 1px; }
         .chat-info { flex: 1; min-width: 0; }
         .chat-name-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
         .chat-name { color: var(--text-white); font-weight: 600; font-size: 14px; }
         .chat-status-badge { font-size: 10px; color: #44bbff; background: rgba(68,187,255,0.1); padding: 2px 6px; border-radius: 4px; }
-        .chat-status-badge.kampung { color: var(--minang-gold); background: rgba(197,160,89,0.1); }
 
-        /* PRIVATE CHAT INTERFACE */
+        /* CHAT INTERFACE */
         .chat-room-header { background-color: #161a22; padding: 12px 16px; display: flex; align-items: center; border-bottom: 1px solid #222; }
-        .btn-back-chat { background: none; border: none; color: var(--minang-gold); font-size: 20px; cursor: pointer; margin-right: 12px; }
         .header-actions { display: flex; gap: 16px; margin-left: auto; }
         .action-icon-btn { background: none; border: none; color: var(--minang-gold); font-size: 18px; cursor: pointer; padding: 4px; }
         .message-area { flex: 1; background-color: #0f1115; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
@@ -119,46 +102,59 @@
         .msg-time { font-size: 9px; color: rgba(255,255,255,0.3); text-align: right; margin-top: 4px; }
         .input-bar { background-color: #161a22; padding: 12px; display: flex; align-items: center; gap: 10px; border-top: 1px solid #222; }
         .input-bar input { flex: 1; background-color: var(--cyber-dark); border: 1px solid #333; padding: 12px; border-radius: 24px; color: #fff; outline: none; font-size: 14px; }
-        .btn-send { width: 44px; height: 44px; background-color: var(--minang-red); border: 1px solid var(--minang-gold); border-radius: 50%; color: #fff; cursor: pointer; font-size: 15px; }
+        .btn-send { width: 44px; height: 44px; background-color: var(--minang-red); border: 1px solid var(--minang-gold); border-radius: 50%; color: #fff; cursor: pointer; font-size: 15px; border: none; }
 
-        /* OVERLAY PANEL PANGGILAN CALL / VCALL */
-        .call-overlay {
-            position: absolute; inset: 0; background: linear-gradient(180deg, #11141a 0%, #050508 100%);
-            z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px;
-        }
+        /* PROFILE SETUP & RANJI COMPONENT */
+        .profile-scroll-box { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+        .ranji-card { background: #11141a; border: 1px solid #222; border-radius: 8px; padding: 14px; margin-top: 10px; }
+        .ranji-card h4 { font-size: 13px; color: var(--minang-gold); text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #333; padding-bottom: 4px; }
+        .sub-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+
+        /* CALL OVERLAY */
+        .call-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #11141a 0%, #050508 100%); z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: space-between; padding: 60px 20px; }
         .call-overlay.active { display: flex; }
-        .call-info { text-align: center; }
-        .call-avatar { width: 100px; height: 100px; background-color: var(--chat-bg); border: 2px solid var(--minang-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 44px; margin: 0 auto 20px; }
-        .call-name { font-size: 22px; font-weight: bold; color: #fff; margin-bottom: 8px; }
-        .call-status { font-size: 13px; color: var(--minang-gold); text-transform: uppercase; letter-spacing: 1px; }
-        .video-canvas-sim { width: 85%; aspect-ratio: 3/4; background-color: #1f2833; border: 1px dashed var(--minang-gold); border-radius: 12px; margin: 20px 0; display: none; align-items: center; justify-content: center; font-size: 12px; color: #888; position: relative; overflow: hidden; }
-        .btn-end-call { width: 60px; height: 60px; background-color: #ff3333; border: none; border-radius: 50%; color: #fff; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(255,51,51,0.4); }
+        .call-avatar-frame { width: 100px; height: 100px; background-color: var(--chat-bg); border: 2px solid var(--minang-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 44px; margin: 0 auto 20px; overflow: hidden; }
+        .call-avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .video-canvas-sim { width: 85%; aspect-ratio: 3/4; background-color: #1f2833; border: 1px dashed var(--minang-gold); border-radius: 12px; display: none; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .btn-end-call { width: 60px; height: 60px; background-color: #ff3333; border: none; border-radius: 50%; color: #fff; font-size: 24px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <!-- SCREEN 1: REGISTER/LOGIN PROFIL -->
+    <!-- SCREEN 1: REGISTER/LOGIN INITIAL PROFIL -->
     <div id="screen-login" class="screen active">
-        <div class="welcome-text" style="text-align:center; margin-bottom:25px;">
-            <h2 style="color:#fff; font-size:24px; font-weight:800; letter-spacing:1px;">RANJI SIBER</h2>
-            <p style="color:#888; font-size:12px; text-transform:uppercase; margin-top:4px;">WhatsApp Khusus Sanak Minangkabau</p>
+        <div class="welcome-text" style="text-align:center; margin-bottom:20px;">
+            <h2 style="color:#fff; font-size:22px; font-weight:800; letter-spacing:1px;">RANJI ALAM MINANGKABAU</h2>
+            <p style="color:#888; font-size:11px; text-transform:uppercase; margin-top:4px;">Taruko Hubungan Garih Keturunan</p>
         </div>
         <div class="form-group">
-            <label>Namo Sanak / Garih</label>
+            <label>Namo Sanak</label>
             <input type="text" id="user-name" class="form-control" placeholder="Contoh: Ikbal Perkasa">
         </div>
         <div class="form-group">
             <label>Suku Minangkabau</label>
-            <select id="user-suku" class="form-control">
-                <option value="Chaniago">Chaniago</option>
+            <select id="user-suku" class="form-control" onchange="cekSukuLainnya(this, 'login-suku-lain-box')">
+                <option value="Malayu">Malayu</option>
+                <option value="Bendang">Bendang</option>
+                <option value="Caniago">Caniago</option>
                 <option value="Koto">Koto</option>
                 <option value="Piliang">Piliang</option>
                 <option value="Bodi">Bodi</option>
-                <option value="Melayu">Melayu</option>
-                <option value="Jambak">Jambak</option>
                 <option value="Sikumbang">Sikumbang</option>
+                <option value="Kampai">Kampai</option>
+                <option value="Jambak">Jambak</option>
+                <option value="Kutianyie">Kutianyie</option>
+                <option value="Sumpu">Sumpu</option>
+                <option value="Tanjuang">Tanjuang</option>
+                <option value="Panai">Panai</option>
+                <option value="Lainnya">Lainnya (Pecahan Suku)</option>
             </select>
+        </div>
+        <!-- Kolom Input Manual untuk Suku Pecahan/Kecil -->
+        <div class="form-group" id="login-suku-lain-box" style="display:none;">
+            <label>Tulis Namo Suku Ketek / Pecahan</label>
+            <input type="text" id="user-suku-lain" class="form-control" placeholder="Contoh: Toboh, Payobada, dll">
         </div>
         <div class="form-group">
             <label>Posisi Sanak Kini</label>
@@ -167,45 +163,49 @@
                 <option value="Rantau">✈ Di Parantauan</option>
             </select>
         </div>
-        <button class="btn-submit" onclick="loginKeRanjiServer()">Daftar Masuk Jaringan ➔</button>
+        <button class="btn-submit" onclick="loginKeRanjiServer()">Daftar & Masuk Ranji ➔</button>
     </div>
 
     <!-- SCREEN 2: DASHBOARD UTAMA & DIREKTORI CHAT -->
     <div id="screen-dashboard" class="screen">
         <header class="app-header">
-            <div>
-                <h1 class="app-title">ranji.</h1>
-                <p class="app-subtitle" id="lbl-user-suku">Klan Room</p>
+            <div class="header-back-block">
+                <button class="btn-global-back" onclick="gantiScreenKe('screen-login')">🡨</button>
+                <div>
+                    <h1 class="app-title">ranji.</h1>
+                    <p class="app-subtitle" id="lbl-user-suku">Klan Room</p>
+                </div>
             </div>
+            <button class="action-icon-btn" onclick="bukaLayarEditProfil()" style="font-size:22px;">⚙</button>
         </header>
         <div class="info-box">
-            <p style="font-size:13px; color:#fff;">Dunsanak Aktif: <span id="lbl-user-nama" style="color:var(--minang-gold); font-weight:bold;">-</span></p>
+            <div>
+                <p style="font-size:13px; color:#fff;">Dunsanak Aktif: <span id="lbl-user-nama" style="color:var(--minang-gold); font-weight:bold;">-</span></p>
+                <p id="lbl-user-bio" style="font-size:11px; color:#888; font-style:italic; margin-top:2px;">"Barek samo dipikua..."</p>
+            </div>
+            <img id="dashboard-avatar-img" src="" class="dashboard-user-dp" alt="DP" onclick="bukaLayarEditProfil()">
         </div>
         
-        <!-- JEMBATAN LINK MENUJU KEMBARAN: RESONA APP -->
         <a href="https://nalarekaid-cyber.github.io/resona-app/" target="_blank" class="resona-bridge-btn">
             <span>🔮 Cek Frekuensi Batin di Resona.app ➔</span>
         </a>
 
-        <!-- Saluran Umum Balai Adat Suku -->
         <div class="section-title">Balai Musyawarah Adat</div>
         <div id="balai-adat-container"></div>
 
-        <!-- Saluran Japri / Chat Pribadi -->
         <div class="section-title">Obrolan Pribadi (Japri Badunsanak)</div>
         <div class="chat-list" id="direktori-dunsanak"></div>
     </div>
 
-    <!-- SCREEN 3: INTERFACE ROOM CHAT (UMUM & PRIVAT) -->
+    <!-- SCREEN 3: INTERFACE ROOM CHAT -->
     <div id="screen-chat" class="screen">
         <div class="chat-room-header">
-            <button class="btn-back-chat" onclick="keluarKeDashboard()">🡨</button>
+            <button class="btn-global-back" onclick="keluarKeDashboard()">🡨</button>
             <div class="avatar online" id="chat-header-avatar" style="width:34px; height:34px; font-size:14px;">👨</div>
             <div class="chat-info" style="margin-left: 8px;">
                 <div class="chat-room-title" id="chat-room-title">Nama Target</div>
                 <div id="chat-room-status" style="color:var(--online-green); font-size:11px;">● Aktif</div>
             </div>
-            <!-- Tombol Aksi WhatsApp Premium: Call & Video Call -->
             <div class="header-actions" id="chat-header-actions">
                 <button class="action-icon-btn" onclick="inisialisasiPanggilan('Voice Call')">📞</button>
                 <button class="action-icon-btn" onclick="inisialisasiPanggilan('Video Call')">📹</button>
@@ -218,54 +218,164 @@
         </div>
     </div>
 
-    <!-- LAYAR OVERLAY PANGGILAN (CALL / VCALL INTERFACE) -->
+    <!-- SCREEN 4: LAYER EDIT PROFIL & STRUKTUR KEKERABATAN RANJI -->
+    <div id="screen-edit-profil" class="screen">
+        <header class="app-header">
+            <div class="header-back-block">
+                <button class="btn-global-back" onclick="gantiScreenKe('screen-dashboard')">🡨</button>
+                <div>
+                    <h1 class="app-title">Profil & Ranji Kito</h1>
+                    <p class="app-subtitle">Silsilah Alam Minangkabau</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="profile-scroll-box">
+            <div style="display:flex; justify-content:center; position:relative; width:100%;">
+                <img id="edit-dp-preview" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:2px solid var(--minang-gold);" alt="DP">
+                <input type="file" style="position:absolute; width:90px; height:90px; opacity:0; cursor:pointer;" accept="image/*" onchange="prosesFotoProfil(this)">
+            </div>
+            
+            <div class="form-group">
+                <label>Ganti Namo Sanak</label>
+                <input type="text" id="edit-user-name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Status Bio / Kabar Keturunan</label>
+                <input type="text" id="edit-user-bio" class="form-control">
+            </div>
+            <div class="sub-group-row">
+                <div class="form-group">
+                    <label>Suku</label>
+                    <select id="edit-user-suku" class="form-control" onchange="cekSukuLainnya(this, 'edit-suku-lain-box')">
+                        <option value="Malayu">Malayu</option>
+                        <option value="Bendang">Bendang</option>
+                        <option value="Caniago">Caniago</option>
+                        <option value="Koto">Koto</option>
+                        <option value="Piliang">Piliang</option>
+                        <option value="Bodi">Bodi</option>
+                        <option value="Sikumbang">Sikumbang</option>
+                        <option value="Kampai">Kampai</option>
+                        <option value="Jambak">Jambak</option>
+                        <option value="Kutianyie">Kutianyie</option>
+                        <option value="Sumpu">Sumpu</option>
+                        <option value="Tanjuang">Tanjuang</option>
+                        <option value="Panai">Panai</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Posisi</label>
+                    <select id="edit-user-posisi" class="form-control">
+                        <option value="Kampung">🏡 Kampung</option>
+                        <option value="Rantau">✈ Rantau</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" id="edit-suku-lain-box" style="display:none;">
+                <label>Namo Suku Pecahan</label>
+                <input type="text" id="edit-user-suku-lain" class="form-control">
+            </div>
+
+            <!-- FITUR UTAMA KEKERABATAN (RANJI GENERATOR) -->
+            <div class="ranji-card">
+                <h4>Pohon Silsilah Ranji Sanak</h4>
+                <div class="form-group">
+                    <label>Namo Ayah</label>
+                    <input type="text" id="ranji-ayah" class="form-control" placeholder="Namo Ayah (Pariuk)">
+                </div>
+                <div class="form-group">
+                    <label>Namo Ibu (Pangka Garih Suku)</label>
+                    <input type="text" id="ranji-ibu" class="form-control" placeholder="Namo Kanduang Ibu">
+                </div>
+                <div class="sub-group-row">
+                    <div class="form-group">
+                        <label>Sdr Laki-Laki Ibu (Mamak)</label>
+                        <input type="text" id="ranji-sdr-lk-ibu" class="form-control" placeholder="Namo Mamak Kandung">
+                    </div>
+                    <div class="form-group">
+                        <label>Sdr Perempuan Ibu</label>
+                        <input type="text" id="ranji-sdr-pr-ibu" class="form-control" placeholder="Namo Makwo / Maktek">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Status Pernikahan</label>
+                    <select id="ranji-status-nikah" class="form-control" onchange="togglePasanganField(this.value)">
+                        <option value="Belum">Belum Menikah</option>
+                        <option value="Menikah">Sudah Menikah</option>
+                    </select>
+                </div>
+                <div class="form-group" id="ranji-pasangan-box" style="display:none;">
+                    <label id="lbl-pasangan">Namo Suami / Istri</label>
+                    <input type="text" id="ranji-pasangan" class="form-control" placeholder="Namo Pasangan Sanak">
+                </div>
+            </div>
+
+            <button class="btn-submit" onclick="simpanPerubahanProfil()">Simpan Konteks Ranji Real 💾</button>
+        </div>
+    </div>
+
+    <!-- LAYAR OVERLAY PANGGILAN -->
     <div class="call-overlay" id="call-panel">
         <div class="call-info">
-            <div class="call-avatar" id="call-panel-avatar">👨</div>
-            <div class="call-name" id="call-panel-name">Dunsanak Target</div>
+            <div class="call-avatar-frame" id="call-panel-avatar">👨</div>
+            <div class="call-name" id="call-panel-name">Dunsanak</div>
             <div class="call-status" id="call-panel-type">Voice Calling...</div>
             <div id="call-timer" style="font-family:monospace; font-size:14px; color:#fff; margin-top:8px; display:none;">00:00</div>
         </div>
-        
-        <!-- Kamera Simulasi untuk Video Call -->
-        <div class="video-canvas-sim" id="video-sim-frame">
-            <div style="position:absolute; bottom:10px; right:10px; width:70px; height:100px; background:#111; border:1px solid #fff; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:8px;">Kamera Lo</div>
-            📱 Kamera Dunsanak Aktif
-        </div>
-
+        <div class="video-canvas-sim" id="video-sim-frame">📱 Kamera Aktif</div>
         <button class="btn-end-call" onclick="akhiriPanggilan()">📴</button>
     </div>
 </div>
 
 <script>
-    // Server Cloud Database Sinkronisasi Chat
     const firebaseConfig = { databaseURL: "https://ranji-siber-default-rtdb.firebaseio.com/" };
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-    let myProfile = { nama: "", suku: "", lokasi: "" };
-    let currentChatMode = "group";
+    const defaultDP = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c5a059'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v2h-16c0-2.66 5.33-4 8-4z'/></svg>";
+
+    let myProfile = { 
+        nama: "", suku: "", lokasi: "", bio: "Taruko Ranji Alam Minangkabau.", dp: defaultDP,
+        silsilah: { ayah: "", ibu: "", sdr_lk_ibu: "", sdr_pr_ibu: "", status_nikah: "Belum", pasangan: "" }
+    };
+    
     let currentRoomNodePath = "";
     let callTimerInterval = null;
 
     const listDunsanakTerdaftar = [
-        { nama: "Uda Sutan Koto", suku: "Koto", lokasi: "Kampung", kota: "Bukittinggi", avatar: "👳" },
-        { nama: "Rian Chaniago", suku: "Chaniago", lokasi: "Rantau", kota: "Jakarta", avatar: "👨" },
-        { nama: "Fitri Piliang", suku: "Piliang", lokasi: "Rantau", kota: "Bandung", avatar: "👩" },
-        { nama: "Ajo Hendra Bodi", suku: "Bodi", lokasi: "Kampung", kota: "Padang", avatar: "🧔" },
-        { nama: "Dewi Melayu", suku: "Melayu", lokasi: "Rantau", kota: "Medan", avatar: "👩" }
+        { nama: "Uda Sutan Koto", suku: "Koto", lokasi: "Kampung", kota: "Bukittinggi", avatar: "👳", dp: "" },
+        { nama: "Rian Chaniago", suku: "Chaniago", lokasi: "Rantau", kota: "Jakarta", avatar: "👨", dp: "" },
+        { nama: "Fitri Piliang", suku: "Piliang", lokasi: "Rantau", kota: "Bandung", avatar: "👩", dp: "" },
+        { nama: "Ajo Hendra Bodi", suku: "Bodi", lokasi: "Kampung", kota: "Padang", avatar: "🧔", dp: "" }
     ];
+
+    function cekSukuLainnya(selectObj, targetId) {
+        document.getElementById(targetId).style.display = (selectObj.value === "Lainnya") ? "block" : "none";
+    }
+
+    function togglePasanganField(status) {
+        document.getElementById('ranji-pasangan-box').style.display = (status === "Menikah") ? "block" : "none";
+    }
 
     function loginKeRanjiServer() {
         const namaInput = document.getElementById('user-name').value.trim();
-        if(!namaInput) { alert("Sia namo sanak? Isi dulu!"); return; }
+        if(!namaInput) { alert("Namo wajib diisi sanak!"); return; }
 
         myProfile.nama = namaInput;
-        myProfile.suku = document.getElementById('user-suku').value;
+        const sukuPilihan = document.getElementById('user-suku').value;
+        myProfile.suku = (sukuPilihan === "Lainnya") ? document.getElementById('user-suku-lain').value.trim() : sukuPilihan;
         myProfile.lokasi = document.getElementById('user-posisi').value;
 
-        document.getElementById('lbl-user-nama').innerText = `${myProfile.nama}`;
-        document.getElementById('lbl-user-suku').innerText = `Suku ${myProfile.suku.toUpperCase()}`;
+        sinkronkanUIProfil();
+        gantiScreenKe('screen-dashboard');
+    }
+
+    function sinkronkanUIProfil() {
+        document.getElementById('lbl-user-nama').innerText = myProfile.nama;
+        document.getElementById('lbl-user-bio').innerText = `"${myProfile.bio}"`;
+        document.getElementById('lbl-user-suku').innerText = `Suku: ${myProfile.suku.toUpperCase()}`;
+        document.getElementById('dashboard-avatar-img').src = myProfile.dp;
 
         const balaiContainer = document.getElementById('balai-adat-container');
         balaiContainer.innerHTML = `
@@ -274,30 +384,25 @@
                 <div style="font-size:12px; color:var(--minang-gold); margin-top:2px;">Kamar musyawarah terbuka sesuku.</div>
             </div>
         `;
-
-        gantiScreenKe('screen-dashboard');
         renderDaftarDunsanakPrivat();
     }
 
     function renderDaftarDunsanakPrivat() {
         const container = document.getElementById('direktori-dunsanak');
         container.innerHTML = "";
-
         listDunsanakTerdaftar.forEach(d => {
             if(d.nama === myProfile.nama) return;
-
             const item = document.createElement('div');
             item.className = 'chat-item';
             item.onclick = () => bukaKamarChatPrivat(d);
-
             item.innerHTML = `
-                <div class="avatar online">${d.avatar}</div>
+                <div class="avatar online">${d.dp ? `<img src="${d.dp}">` : d.avatar}</div>
                 <div class="chat-info">
                     <div class="chat-name-row">
-                        <div class="chat-name">${d.nama} ${d.suku === myProfile.suku ? '<span style="color:var(--minang-gold); font-size:11px;">(Badunsanak)</span>' : ''}</div>
-                        <span class="chat-status-badge ${d.lokasi.toLowerCase()}">${d.lokasi === 'Rantau' ? '✈ '+d.kota : '🏡 Kampung'}</span>
+                        <div class="chat-name">${d.nama} ${d.suku.toLowerCase() === myProfile.suku.toLowerCase() ? '<span style="color:var(--minang-gold); font-size:11px;">(Sasuku)</span>' : ''}</div>
+                        <span class="chat-status-badge">${d.lokasi === 'Rantau' ? '✈ '+d.kota : '🏡 Kampung'}</span>
                     </div>
-                    <div style="font-size:12px; color:#888;">Suku Keturunan: ${d.suku}</div>
+                    <div style="font-size:12px; color:#888;">Suku: ${d.suku}</div>
                 </div>
             `;
             container.appendChild(item);
@@ -305,51 +410,42 @@
     }
 
     function bukaKamarGrupSuku(suku) {
-        currentChatMode = "group";
-        currentRoomNodePath = 'rooms/grup_' + suku;
-        
-        document.getElementById('chat-header-avatar').innerText = "🏛️";
+        currentRoomNodePath = 'rooms/grup_' + suku.replace(/[^a-zA-Z0-9_]/g, '');
+        document.getElementById('chat-header-avatar').innerHTML = "🏛️";
         document.getElementById('chat-room-title').innerText = `Balai Suku ${suku}`;
         document.getElementById('chat-room-status').innerText = "Ruang Musyawarah Publik";
         document.getElementById('chat-header-actions').style.display = "none";
-
         sambungkanPipaRealtimeDatabase();
     }
 
     function bukaKamarChatPrivat(dunsanakTarget) {
-        currentChatMode = "private";
         const pathID = [myProfile.nama, dunsanakTarget.nama].sort().join('_').replace(/[^a-zA-Z0-9_]/g, '');
         currentRoomNodePath = 'rooms/privat_' + pathID;
-
-        document.getElementById('chat-header-avatar').innerText = dunsanakTarget.avatar;
+        document.getElementById('chat-header-avatar').innerHTML = dunsanakTarget.dp ? `<img src="${dunsanakTarget.dp}">` : dunsanakTarget.avatar;
         document.getElementById('chat-room-title').innerText = dunsanakTarget.nama;
         document.getElementById('chat-room-status').innerText = `Suku ${dunsanakTarget.suku} · Online`;
         document.getElementById('chat-header-actions').style.display = "flex";
-
         sambungkanPipaRealtimeDatabase();
     }
 
     function sambungkanPipaRealtimeDatabase() {
         const container = document.getElementById('message-container');
         container.innerHTML = "";
-
         const ref = database.ref(currentRoomNodePath);
         ref.off();
         ref.limitToLast(40).on('child_added', (snap) => {
             const msg = snap.val();
             const isMe = msg.sender === myProfile.nama;
-
             const bubble = document.createElement('div');
             bubble.className = `msg-bubble ${isMe ? 'outgoing' : 'incoming'}`;
             bubble.innerHTML = `
-                <div class="msg-sender">${isMe ? 'Ambo' : msg.sender} (${msg.lokasi})</div>
+                <div class="msg-sender">${isMe ? 'Ambo' : msg.sender} (${msg.suku})</div>
                 <div>${msg.text}</div>
                 <div class="msg-time">${msg.time}</div>
             `;
             container.appendChild(bubble);
             container.scrollTop = container.scrollHeight;
         });
-
         gantiScreenKe('screen-chat');
     }
 
@@ -357,68 +453,84 @@
         const input = document.getElementById('input-chat-text');
         const text = input.value.trim();
         if(!text) return;
-
         const timeString = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-
         database.ref(currentRoomNodePath).push({
             sender: myProfile.nama,
-            lokasi: myProfile.lokasi,
+            suku: myProfile.suku,
             text: text,
             time: timeString
         });
-
         input.value = "";
     }
 
-    function inisialisasiPanggilan(tipe) {
-        const targetNama = document.getElementById('chat-room-title').innerText;
-        const targetAvatar = document.getElementById('chat-header-avatar').innerText;
-
-        document.getElementById('call-panel-name').innerText = targetNama;
-        document.getElementById('call-panel-avatar').innerText = targetAvatar;
-        document.getElementById('call-panel-type').innerText = `${tipe} Berdering...`;
+    function bukaLayarEditProfil() {
+        document.getElementById('edit-user-name').value = myProfile.nama;
+        document.getElementById('edit-user-bio').value = myProfile.bio;
+        document.getElementById('edit-dp-preview').src = myProfile.dp;
         
-        const videoFrame = document.getElementById('video-sim-frame');
-        if(tipe === "Video Call") {
-            videoFrame.style.display = "flex";
-        } else {
-            videoFrame.style.display = "none";
+        // Load data Silsilah Ranji
+        document.getElementById('ranji-ayah').value = myProfile.silsilah.ayah;
+        document.getElementById('ranji-ibu').value = myProfile.silsilah.ibu;
+        document.getElementById('ranji-sdr-lk-ibu').value = myProfile.silsilah.sdr_lk_ibu;
+        document.getElementById('ranji-sdr-pr-ibu').value = myProfile.silsilah.sdr_pr_ibu;
+        document.getElementById('ranji-status-nikah').value = myProfile.silsilah.status_nikah;
+        document.getElementById('ranji-pasangan').value = myProfile.silsilah.pasangan;
+        togglePasanganField(myProfile.silsilah.status_nikah);
+
+        gantiScreenKe('screen-edit-profil');
+    }
+
+    function prosesFotoProfil(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = (e) => { document.getElementById('edit-dp-preview').src = e.target.result; }
+            reader.readAsDataURL(input.files[0]);
         }
-
-        document.getElementById('call-panel').classList.add('active');
-
-        setTimeout(() => {
-            document.getElementById('call-panel-type').innerText = `${tipe} Terhubung`;
-            const timerLabel = document.getElementById('call-timer');
-            timerLabel.style.display = "block";
-            
-            let detik = 0;
-            clearInterval(callTimerInterval);
-            callTimerInterval = setInterval(() => {
-                detik++;
-                const m = String(Math.floor(detik / 60)).padStart(2, '0');
-                const s = String(detik % 60).padStart(2, '0');
-                timerLabel.innerText = `${m}:${s}`;
-            }, 1000);
-        }, 2000);
     }
 
-    function akhiriPanggilan() {
-        clearInterval(callTimerInterval);
-        document.getElementById('call-timer').style.display = "none";
-        document.getElementById('call-timer').innerText = "00:00";
-        document.getElementById('call-panel').classList.remove('active');
-    }
+    function simpanPerubahanProfil() {
+        const namaBaru = document.getElementById('edit-user-name').value.trim();
+        if(!namaBaru) return;
 
-    function keluarKeDashboard() {
-        database.ref(currentRoomNodePath).off();
+        myProfile.nama = namaBaru;
+        myProfile.bio = document.getElementById('edit-user-bio').value.trim() || myProfile.bio;
+        
+        const sukuSel = document.getElementById('edit-user-suku').value;
+        myProfile.suku = (sukuSel === "Lainnya") ? document.getElementById('edit-user-suku-lain').value.trim() : sukuSel;
+        myProfile.lokasi = document.getElementById('edit-user-posisi').value;
+        myProfile.dp = document.getElementById('edit-dp-preview').src;
+
+        // Amankan Data Silsilah ke Profil
+        myProfile.silsilah.ayah = document.getElementById('ranji-ayah').value.trim();
+        myProfile.silsilah.ibu = document.getElementById('ranji-ibu').value.trim();
+        myProfile.silsilah.sdr_lk_ibu = document.getElementById('ranji-sdr-lk-ibu').value.trim();
+        myProfile.silsilah.sdr_pr_ibu = document.getElementById('ranji-sdr-pr-ibu').value.trim();
+        myProfile.silsilah.status_nikah = document.getElementById('ranji-status-nikah').value;
+        myProfile.silsilah.pasangan = document.getElementById('ranji-pasangan').value.trim();
+
+        // Terbangkan skema database ranji klan ini ke cloud global
+        database.ref('ranji_alam_database/' + myProfile.nama.replace(/[^a-zA-Z0-9_]/g, '')).set({
+            nama: myProfile.nama,
+            suku: myProfile.suku,
+            lokasi: myProfile.lokasi,
+            silsilah: myProfile.silsilah
+        });
+
+        sinkronkanUIProfil();
         gantiScreenKe('screen-dashboard');
     }
 
-    function gantiScreenKe(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+    function inisialisasiPanggilan(tipe) {
+        document.getElementById('call-panel-name').innerText = document.getElementById('chat-room-title').innerText;
+        document.getElementById('call-panel-avatar').innerHTML = document.getElementById('chat-header-avatar').innerHTML;
+        document.getElementById('call-panel-type').innerText = `${tipe} Berdering...`;
+        document.getElementById('video-sim-frame').style.display = (tipe === "Video Call") ? "flex" : "none";
+        document.getElementById('call-panel').classList.add('active');
     }
+
+    function akhiriPanggilan() { document.getElementById('call-panel').classList.remove('active'); }
+    function keluarKeDashboard() { database.ref(currentRoomNodePath).off(); gantiScreenKe('screen-dashboard'); }
+    function gantiScreenKe(id) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
 </script>
 </body>
 </html>
